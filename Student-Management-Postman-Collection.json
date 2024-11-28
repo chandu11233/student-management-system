@@ -76,7 +76,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"studentId\": 1,\n    \"subject\": \"Mathematics\",\n    \"marks\": 85,\n    \"semester\": \"Fall 2023\",\n    \"examType\": \"MIDTERM\",\n    \"academicYear\": \"2023-2024\"\n}"
+							"raw": "{\n    \"studentId\": 1,\n    \"subject\": \"Mathematics\",\n    \"marks\": 85,\n    \"semester\": \"2023-FALL\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/college/marks",
@@ -88,16 +88,51 @@
 					}
 				},
 				{
+					"name": "Add Bulk Student Marks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"studentId\": 1,\n        \"subject\": \"Mathematics\",\n        \"marks\": 85,\n        \"semester\": \"2023-FALL\"\n    },\n    {\n        \"studentId\": 1,\n        \"subject\": \"Physics\",\n        \"marks\": 90,\n        \"semester\": \"2023-FALL\"\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/college/marks/bulk",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "marks", "bulk"]
+						}
+					}
+				},
+				{
 					"name": "Get Student Marks",
 					"request": {
 						"method": "GET",
-						"header": [],
 						"url": {
 							"raw": "http://localhost:8080/api/college/marks/student/1",
 							"protocol": "http",
 							"host": ["localhost"],
 							"port": "8080",
 							"path": ["api", "college", "marks", "student", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Student Marks by Semester",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/college/marks/student/1/semester/2023-FALL",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "marks", "student", "1", "semester", "2023-FALL"]
 						}
 					}
 				},
@@ -113,7 +148,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"studentId\": 1,\n    \"date\": \"2023-11-15\",\n    \"subject\": \"Mathematics\",\n    \"present\": true,\n    \"academicYear\": \"2023-2024\"\n}"
+							"raw": "{\n    \"studentId\": 1,\n    \"date\": \"2023-11-15\",\n    \"status\": \"PRESENT\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/college/attendance",
@@ -125,16 +160,84 @@
 					}
 				},
 				{
+					"name": "Mark Bulk Attendance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"studentId\": 1,\n        \"date\": \"2023-11-15\",\n        \"status\": \"PRESENT\"\n    },\n    {\n        \"studentId\": 2,\n        \"date\": \"2023-11-15\",\n        \"status\": \"ABSENT\"\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/college/attendance/bulk",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "attendance", "bulk"]
+						}
+					}
+				},
+				{
 					"name": "Get Student Attendance",
 					"request": {
 						"method": "GET",
-						"header": [],
 						"url": {
 							"raw": "http://localhost:8080/api/college/attendance/student/1",
 							"protocol": "http",
 							"host": ["localhost"],
 							"port": "8080",
 							"path": ["api", "college", "attendance", "student", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Student Attendance by Date Range",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/college/attendance/student/1/range?startDate=2023-11-01&endDate=2023-11-15",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "attendance", "student", "1", "range"],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-11-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-11-15"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Student Attendance Percentage",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/college/attendance/student/1/percentage?startDate=2023-11-01&endDate=2023-11-15",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "attendance", "student", "1", "percentage"],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-11-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-11-15"
+								}
+							]
 						}
 					}
 				}

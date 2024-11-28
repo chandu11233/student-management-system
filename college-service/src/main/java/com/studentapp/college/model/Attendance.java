@@ -1,6 +1,7 @@
 package com.studentapp.college.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,16 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotNull(message = "Student ID cannot be null")
     private Long studentId;
+
+    @NotNull(message = "Date cannot be null")
     private LocalDate date;
+
+    @NotNull(message = "Status cannot be null")
+    @Column(name = "status")
+    private String status; // "PRESENT" or "ABSENT"
+
     private String subject;
     private boolean present;
     
