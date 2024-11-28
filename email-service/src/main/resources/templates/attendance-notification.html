@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Attendance Update</title>
+</head>
+<body>
+    <h2>Hello <span th:text="${studentName}"></span>,</h2>
+    
+    <p>Here is your attendance report for <span th:text="${period}"></span>:</p>
+    
+    <table border="1">
+        <tr>
+            <th>Subject</th>
+            <th>Attendance Percentage</th>
+        </tr>
+        <tr th:each="att : ${attendance}">
+            <td th:text="${att.key}"></td>
+            <td th:text="${att.value + '%'}"></td>
+        </tr>
+    </table>
+    
+    <p>Please maintain regular attendance in all classes.</p>
+    
+    <p>Best regards,<br/>College Administration</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Academic Performance Update</title>
+</head>
+<body>
+    <h2>Hello <span th:text="${studentName}"></span>,</h2>
+    
+    <p>Here are your academic results for semester <span th:text="${semester}"></span>:</p>
+    
+    <table border="1">
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+        <tr th:each="mark : ${marks}">
+            <td th:text="${mark.key}"></td>
+            <td th:text="${mark.value}"></td>
+        </tr>
+    </table>
+    
+    <p>Keep up the good work!</p>
+    
+    <p>Best regards,<br/>College Administration</p>
+</body>
+</html>

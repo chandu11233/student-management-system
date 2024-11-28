@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "your-postman-id",
+		"name": "Student Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student Service",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phoneNumber\": \"1234567890\",\n    \"address\": \"123 Main St\",\n    \"parentEmail\": \"parent@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "students"]
+						}
+					}
+				},
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "students"]
+						}
+					}
+				},
+				{
+					"name": "Get Student by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "students", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "College Service",
+			"item": [
+				{
+					"name": "Add Student Marks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"studentId\": 1,\n    \"subject\": \"Mathematics\",\n    \"marks\": 85,\n    \"semester\": \"Fall 2023\",\n    \"examType\": \"MIDTERM\",\n    \"academicYear\": \"2023-2024\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/college/marks",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "marks"]
+						}
+					}
+				},
+				{
+					"name": "Get Student Marks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/college/marks/student/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "marks", "student", "1"]
+						}
+					}
+				},
+				{
+					"name": "Mark Attendance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"studentId\": 1,\n    \"date\": \"2023-11-15\",\n    \"subject\": \"Mathematics\",\n    \"present\": true,\n    \"academicYear\": \"2023-2024\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/college/attendance",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "attendance"]
+						}
+					}
+				},
+				{
+					"name": "Get Student Attendance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/college/attendance/student/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "college", "attendance", "student", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Email Service",
+			"item": [
+				{
+					"name": "Send Marks Notification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"studentName\": \"John Doe\",\n    \"studentEmail\": \"john.doe@example.com\",\n    \"parentEmail\": \"parent@example.com\",\n    \"semester\": \"Fall 2023\",\n    \"marks\": {\n        \"Mathematics\": 85,\n        \"Physics\": 90,\n        \"Chemistry\": 88\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/email/send-marks",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "email", "send-marks"]
+						}
+					}
+				},
+				{
+					"name": "Send Attendance Notification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"studentName\": \"John Doe\",\n    \"studentEmail\": \"john.doe@example.com\",\n    \"parentEmail\": \"parent@example.com\",\n    \"period\": \"October 2023\",\n    \"attendance\": {\n        \"Mathematics\": 85.5,\n        \"Physics\": 90.0,\n        \"Chemistry\": 88.5\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/email/send-attendance",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "email", "send-attendance"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

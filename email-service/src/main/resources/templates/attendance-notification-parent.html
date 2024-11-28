@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Attendance Update</title>
+</head>
+<body>
+    <h2>Dear Parent,</h2>
+    
+    <p>This is to inform you about <span th:text="${studentName}"></span>'s attendance for <span th:text="${period}"></span>:</p>
+    
+    <table border="1">
+        <tr>
+            <th>Subject</th>
+            <th>Attendance Percentage</th>
+        </tr>
+        <tr th:each="att : ${attendance}">
+            <td th:text="${att.key}"></td>
+            <td th:text="${att.value + '%'}"></td>
+        </tr>
+    </table>
+    
+    <p>Please ensure regular attendance in all classes. If the attendance is below 75% in any subject, it may affect academic performance and exam eligibility.</p>
+    
+    <p>Best regards,<br/>College Administration</p>
+</body>
+</html>
