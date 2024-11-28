@@ -1,18 +1,29 @@
 package com.studentapp.college.controller;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.studentapp.college.exception.ResourceNotFoundException;
 import com.studentapp.college.model.Attendance;
 import com.studentapp.college.model.StudentMarks;
 import com.studentapp.college.repository.AttendanceRepository;
 import com.studentapp.college.repository.StudentMarksRepository;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.*;
 
 @RestController
 @RequestMapping("/api/college")
@@ -50,7 +61,7 @@ public class CollegeController {
             @PathVariable String semester) {
         List<StudentMarks> marks = marksRepository.findByStudentIdAndSemester(studentId, semester);
         if (marks.isEmpty()) {
-            throw new ResourceNotFoundException("No marks found for student: " + studentId + " in semester: " + semester);
+            throw new ResourceNotFoundException("No marks were found for student: " + studentId + " in semester: " + semester);
         }
         return ResponseEntity.ok(marks);
     }
